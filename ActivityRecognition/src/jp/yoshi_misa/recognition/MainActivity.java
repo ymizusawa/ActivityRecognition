@@ -1,12 +1,6 @@
-package jp.yoshi_misa.recognition.activity;
+package jp.yoshi_misa.recognition;
 
-import jp.yoshi_misa.recognition.Consts;
 import jp.yoshi_misa.recognition.R;
-import jp.yoshi_misa.recognition.R.id;
-import jp.yoshi_misa.recognition.R.layout;
-import jp.yoshi_misa.recognition.R.string;
-import jp.yoshi_misa.recognition.adapter.LogAdapter;
-import jp.yoshi_misa.recognition.service.RecognitionIntentService;
 import android.app.ActionBar;
 import android.app.LoaderManager;
 import android.app.PendingIntent;
@@ -18,6 +12,8 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentActivity;
 import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ListView;
@@ -32,6 +28,7 @@ public class MainActivity extends FragmentActivity implements
         ConnectionCallbacks, OnConnectionFailedListener,
         OnCheckedChangeListener, LoaderManager.LoaderCallbacks<Cursor> {
 
+    private static final int MENU_ID_MENU1 = 1;
     private ActionBar actionBar;
     private ActivityRecognitionClient mClient;
     protected PendingIntent mPendingIntent;
@@ -50,8 +47,8 @@ public class MainActivity extends FragmentActivity implements
 
         if (PreferenceManager.getDefaultSharedPreferences(this).getBoolean(
                 "service", false)) {
-            if(!mClient.isConnected()) {
-               mClient.connect();
+            if (!mClient.isConnected()) {
+                mClient.connect();
             }
         }
 
@@ -69,6 +66,27 @@ public class MainActivity extends FragmentActivity implements
 
         // Loaderの初期化
         getLoaderManager().initLoader(0, null, this);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // メニューアイテムを追加します
+        menu.add(Menu.NONE, MENU_ID_MENU1, Menu.NONE, "Delete");
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        boolean ret = true;
+        switch (item.getItemId()) {
+        default:
+            ret = super.onOptionsItemSelected(item);
+            break;
+        case MENU_ID_MENU1:
+            getContentResolver().delete(Consts.RECOGNITION_URL, null, null);
+            break;
+        }
+        return ret;
     }
 
     private void setActionBarSwitch(ActionBar actionBar) {

@@ -1,6 +1,5 @@
-package jp.yoshi_misa.recognition.service;
+package jp.yoshi_misa.recognition;
 
-import jp.yoshi_misa.recognition.Consts;
 import android.app.IntentService;
 import android.content.ContentValues;
 import android.content.Intent;
@@ -9,8 +8,6 @@ import com.google.android.gms.location.ActivityRecognitionResult;
 import com.google.android.gms.location.DetectedActivity;
 
 public class RecognitionIntentService extends IntentService {
-
-    private static final String TAG = "RecognitionIntentService";
 
     public RecognitionIntentService() {
         super("RecognitionIntentService");

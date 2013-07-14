@@ -1,4 +1,4 @@
-package jp.yoshi_misa.recognition.provider;
+package jp.yoshi_misa.recognition;
 
 import android.content.ContentProvider;
 import android.content.ContentUris;
@@ -12,9 +12,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.net.Uri;
 
 public class RecognitionContentProvider extends ContentProvider {
-
-    /** URIのauthority. */
-    private static final String AUTHORITY = "jp.yoshi_misa.recognition";
 
     /** SQLiteデータベースのファイル名. */
     private static final String SQLITE_FILENAME = "recognition.db";

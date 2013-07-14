@@ -1,9 +1,6 @@
-package jp.yoshi_misa.recognition.adapter;
+package jp.yoshi_misa.recognition;
 
-import jp.yoshi_misa.recognition.Consts;
 import jp.yoshi_misa.recognition.R;
-import jp.yoshi_misa.recognition.R.id;
-import jp.yoshi_misa.recognition.R.layout;
 import android.content.Context;
 import android.database.Cursor;
 import android.text.format.DateFormat;
