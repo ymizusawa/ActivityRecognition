@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="jp.yoshi_misa.activity_recognition"
+    package="jp.yoshi_misa.recognition"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -16,8 +16,9 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".MainActivity"
-            android:label="@string/app_name" >
+            android:name=".activity.MainActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,9 +27,13 @@
         </activity>
 
         <service
-            android:name=".RecognitionIntentService"
-            android:exported="false" >
-        </service>
+            android:name=".service.RecognitionIntentService"
+            android:exported="false" />
+
+        <provider
+            android:name=".provider.RecognitionContentProvider"
+            android:authorities="jp.yoshi_misa.recognition"
+            android:exported="true" />
     </application>
 
 </manifest>

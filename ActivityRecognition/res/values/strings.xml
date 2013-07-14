@@ -5,4 +5,8 @@
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
 
+    <!--  LogFragment -->
+    <string name="on">ON</string>
+    <string name="off">OFF</string>
+
 </resources>
